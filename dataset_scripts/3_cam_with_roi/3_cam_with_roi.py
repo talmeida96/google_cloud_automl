@@ -1,15 +1,3 @@
-'''
-Este código abre 1 janelas com:
-- a visualização de webcam 
-- um controle de ROI (Região de Interesse) através de sliders (X, Y, largura e altura)
-- um botão para definição da variação máxima do posicionamento*
-- um botão para definição do intervalo de captura das imagens
-- um botão de definição do diretório para armazenamento das imagens capturadas
-- um botão para início das capturas com um intervalo pré-definido
-- um botão de finalização das capturas
-- rodar em ambiente virtual (vertex_course)
-'''
-
 import cv2                          # biblioteca OpenCV para manipulação de imagens e vídeo
 import os                           # biblioteca padrão do Python para operações de sistema operacional
 import threading                    # gerencia threads e permite a captura periódica de imagens sem bloquear a interface
