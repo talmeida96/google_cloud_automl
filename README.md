@@ -1,26 +1,65 @@
-![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white)
+# Vertex - FTA Couse
 
-# Google Cloud AutoML
+## Primeiro módulo
 
-![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white)
+1. Acessar a plataforma Google Vertex
+2. Criar um conjunto de dados
+3. Treinar usando os conjunto de dados criados
+4. Avaliar os modelos
+5. Realizar inferências com os modelos usando Python 🐍
 
- ### Descrição
- Os códigos presentes neste repositório serão utilizados no decorrer do curso AutoML, uma ferramenta de ML automatizado disposibilizada pelo Google Cloud Vertex AI.
+## Segundo módulo
 
-## 📚 Códigos Disponíveis
+1. Configurar camera
+2. Consumir modelo
+3. Rodar modelo em notebook
+4. Rodar modelo local usando um executavel/serviço
 
-📁 `dataset_scripts`: Os códigos desta subpasta são destinados à demonstração passo-a-passo de possibilidades de interfaces gráficas facilmente geradas por usuários sem experiência prévia através de ferramentas de IA para com finalidade de facilitar a captação de imagens para construção de datasets para modelos de imagem como classificação ou detecção de objetos.
+## Em breve:
+- [ ] Criar notebook sobre utilização da camera [Basler](https://github.com/basler/pypylon)
+- [ ] Criar conteúdo sobre o runtime [ONNX](https://onnx.ai/onnx/intro/concepts.html)
+- [ ] Criar template utilizando o [ML.NET](https://www.youtube.com/playlist?list=PL1rZQsJPBU2TwElfOzqOsUW1yuxKNA091)
 
-📁 `automl_loadfile_generator`: Os códigos desta subpasta são referentes à criação de datasets destinados à modelos de detecção de objetos que serão carregados no AutoML através de um arquivo de carga de formato .csv cujos parâmetros de configuração (**ML_USE, GCS_PATH, LABELS e bounding boxes**) já serão carregados para _auto labeling_ da plataforma.
+### Criar ambiente no mini conda
 
- ## 📌 Bibliotecas Utilizadas
-- **CV2**: Biblioteca OpenCV para manipulação de imagem e vídeo.
-- **OS**: Biblioteca padrão do Python para operações de sistema operacional.
-- **THREADING**: Gerencia threads e permite a captura periódica de imagens sem bloquear a interface.
-- **TIME**: Biblioteca para manipulações de tempo.
-- **TKINTER**: Biblioteca para interface gráfica de usuário (GUIs).
-- **PIL**: Biblioteca Pillow para manipulação de imagem.
-- **RANDOM**: Biblioteca para gerar números aleatórios.
-- **CSV**: Biblioteca para ler e escrever arquivos no formato CSV.
+Criar ambiente virutal:
+```sh
+conda env create -n vertex_course -f environment.yml
+```
+
+Ativar ambiente:
+```sh
+conda activate vertex_course
+```
+
+### Como rodar os modelo em container
+
+A plataforma Google Vertex oferece a possibilidade de utilizar containers pré-prontos para implementar rapidamente aplicações prontas. Com o arquivo .yml abaixo, é possível criar modelos facilmente. Necessário fazer o download do .pb da imagem do modelo.
+
+```yml
+version: "3"
+services:
+  modelo1:
+    image: gcr.io/cloud-devrel-public-resources/gcloud-container-1.14.0:latest
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./models/Exemplo1:/tmp/mounted_model/0001
+    networks:
+      - model_network
+    container_name: Exemplo1
+
+  modelo2:
+    image: gcr.io/cloud-devrel-public-resources/gcloud-container-1.14.0:latest
+    ports:
+      - "8502:8501"
+    volumes:
+      - ./models/Exemplo1:/tmp/mounted_model/0001
+    networks:
+      - model_network
+    container_name: Exemplo2
+
+networks:
+  model_network:
+    driver: bridge
+```

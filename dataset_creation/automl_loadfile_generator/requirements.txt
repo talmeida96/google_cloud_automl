@@ -1,0 +1,4 @@
+opencv-python
+pillow
+
+# pip install -r requirements.txt
