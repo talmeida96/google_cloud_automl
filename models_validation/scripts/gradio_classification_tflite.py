@@ -4,8 +4,8 @@ import gradio as gr
 import numpy as np
 import tensorflow as tf
 
-DATA_PATH = os.path.join(os.pardir, "data", "models", "multi")
-MODEL_FILE = "raspberry_cropped.tflite"
+DATA_PATH = os.path.join(os.pardir, "data", "models", "single")
+MODEL_FILE = "ex_raspberry_identifier.tflite"
 MODEL_PATH = os.path.join(DATA_PATH, MODEL_FILE)
 LABEL_FILE = "dict.txt"
 
