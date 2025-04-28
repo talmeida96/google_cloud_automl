@@ -13,7 +13,7 @@ capture_thread = None                               # thread que executa a funç
 save_directory = ""                                 # diretório de armazenamento das imagens
 file_name = "load_file.csv"                         # nome do arquivo de carga a ser gerado
 
-gcs_path = "gs://tx_xxx_aluno/detec/"               # caminho de armazenamento no Cloud Storage ***ALTERAR***
+gcs_path = "gs://t0_thayna_main/single_badges/"     # caminho de armazenamento no Cloud Storage ***ALTERAR***
 
 img_width = 640                                     # largura da imagem capturada
 img_height = 480                                    # altura da imagem capturada
